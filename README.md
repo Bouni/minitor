@@ -29,6 +29,14 @@ make run
 
 It will read the contents of `config.yml` and begin its loop. You could also run it directly and provide a new config file via the `--config` argument.
 
+### Commandline arguments
+
+|argument|default|info|
+|---|---|---|
+|`'--config' or '-c'`|/app/config.yml|Path to the config YAML file to use|
+|`'--metrics' or '-m'`||Start webserver with metrics|
+|`'--metrics-port' or '-p'`||Port to use when serving metrics|
+|`'--verbose' or '-v'`||Adjust log verbosity by increasing arg count. Default log level is ERROR. Level increases with each `v`'|
 
 #### Docker
 
