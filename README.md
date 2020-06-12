@@ -46,6 +46,31 @@ docker run -v $PWD/config.yml:/app/config.yml iamthefij/minitor
 
 Images are provided for `amd64`, `arm`, and `arm64` architechtures, but the Python package should be compatible with anything that supports Python.
 
+#### docker-compose
+
+Here's an example how to use `minitor` with docker-compose.
+
+```
+ version: "3"
+
+  services:
+
+    minitor:
+      image: iamthefij/minitor
+      container_name: minitor
+      command: --metrics -vvv
+      env_file:
+        - telegram.env
+      volumes:
+        - ./minitor/config.yml:/app/config.yml
+        - ./minitor/scripts:/app/scripts
+      ports:
+        - 7070:8080
+```
+
+By specifying `command` additional commandline args can be passed to minitor. The first volume allows you to have your config.yml to be located on the host, the second allows you to have the scripts folder on the host. 
+By specifying an .env file you can have Secrets like API tokens excluded from your config (You can use them within the config like this for example: `${API_TOKEN}`
+ 
 ## Configuring
 
 In this repo, you can explore the `sample-config.yml` file for an example, but the general structure is as follows. It should be noted that environment variable interpolation happens on load of the YAML file.
