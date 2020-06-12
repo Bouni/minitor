@@ -44,6 +44,7 @@ setup(
     install_requires=[
         'prometheus_client',
         'yamlenv',
+        'requests'
     ],
     entry_points={
         'console_scripts': [
